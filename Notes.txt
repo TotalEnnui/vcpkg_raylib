@@ -1,0 +1,4 @@
+set terminal path to VCPKG
+    $env:PATH += ";C:\vcpkg" 
+get path to app:
+    Get-Command vcpkg

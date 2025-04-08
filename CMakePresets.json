@@ -1,0 +1,25 @@
+{
+    "version": 4,
+    "configurePresets": [
+        {
+            "name": "base-vcpkg",
+            "displayName": "MSVC x64 Release",
+            "generator": "Visual Studio 17 2022",
+            "description": "Base preset for vcpkg builds",
+            "binaryDir": "${sourceDir}/build/release",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_CONFIGURATION_TYPES": "Release",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "YES",
+                "CMAKE_EXPORT_LINK_COMMANDS": "YES",
+                "CMAKE_PREFIX_PATH": "C:/vcpkg/installed/x64-windows",
+                "CMAKE_TOOLCHAIN_FILE": "C:/vcpkg/scripts/buildsystems/vcpkg.cmake",
+                "VCPKG_ROOT": "C:/vcpkg",
+                "VCPKG_TARGET_ARCHITECTURE": "x64-windows",
+                "VCPKG_CMAKE_SYSTEM_NAME": "Windows",
+                "VCPKG_TARGET_TRIPLET": "x64-windows",
+                "VCPKG_MANIFEST_MODE": "OFF"
+            }
+        }
+    ]
+}
