@@ -1,20 +1,27 @@
-cmake_minimum_required(VERSION 3.15)
+#########################
+# Project configuration #
+#########################
 
-set(CMAKE_TOOLCHAIN_FILE "c:/vcpkg/scripts/buildsystems/vcpkg.cmake"
-    CACHE STRING "Vcpkg toolchain file")
-# Project name
+cmake_minimum_required(VERSION 3.15)
 project(VCPKG_Raylib_Project)
 
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-# set(CMAKE_PREFIX_PATH "C:/vcpkg/installed/x64-windows")
 
-# Find raylib package
-find_package(raylib CONFIG REQUIRED)
+#########################
+#   Target Declaration  #
+#########################
 
 # Add executable
 add_executable(main main.cpp)
+
+#############################
+#   Target Configuration    #
+#############################
+
+# Find raylib package
+find_package(raylib CONFIG REQUIRED)
 
 # Link raylib to the project
 target_link_libraries(main PRIVATE raylib)

@@ -3,13 +3,11 @@
     "configurePresets": [
         {
             "name": "base-vcpkg",
-            "displayName": "MSVC x64 Release",
+            "displayName": "MSVC x64",
             "generator": "Visual Studio 17 2022",
             "description": "Base preset for vcpkg builds",
             "binaryDir": "${sourceDir}/build/release",
             "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release",
-                "CMAKE_CONFIGURATION_TYPES": "Release",
                 "CMAKE_EXPORT_COMPILE_COMMANDS": "YES",
                 "CMAKE_EXPORT_LINK_COMMANDS": "YES",
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/install",
