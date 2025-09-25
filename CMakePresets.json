@@ -22,6 +22,34 @@
                 "VCPKG_TARGET_TRIPLET": "x64-windows",
                 "VCPKG_MANIFEST_MODE": "OFF"
             }
+        },
+        {
+            "name": "ucrt64-gcc",
+            "displayName": "MSYS2 UCRT64 GCC",
+            "generator": "Ninja",
+            "description": "Preset for reproducible MSYS2 UCRT64 builds",
+            "binaryDir": "${sourceDir}/build/ucrt64-gcc",
+            "environment": {
+                "PATH": "C:/msys64/ucrt64/bin"
+            },
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "C:/msys64/ucrt64/bin/gcc.exe",
+                "CMAKE_CXX_COMPILER": "C:/msys64/ucrt64/bin/g++.exe",
+                "CMAKE_CXX_STANDARD": "17",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "YES",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install",
+                "VCPKG_ROOT": "C:/vcpkg",
+                "VCPKG_TARGET_TRIPLET": "x64-mingw-static",
+                "CMAKE_TOOLCHAIN_FILE": "C:/vcpkg/scripts/buildsystems/vcpkg.cmake"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "ucrt64-gcc",
+            "configurePreset": "ucrt64-gcc",
+            "description": "Build using MSYS2 UCRT64 GCC",
+            "jobs": 8
         }
     ]
 }

@@ -20,8 +20,9 @@ add_executable(main main.cpp)
 #   Target Configuration    #
 #############################
 
-# Find raylib package
+# Find packages
 find_package(raylib CONFIG REQUIRED)
+find_package(glfw3 CONFIG REQUIRED)
 
-# Link raylib to the project
-target_link_libraries(main PRIVATE raylib)
+# Link corresponding packages and default libraries
+target_link_libraries(main PRIVATE raylib glfw winmm)
