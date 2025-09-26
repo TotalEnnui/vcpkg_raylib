@@ -2,8 +2,32 @@
     "version": 4,
     "configurePresets": [
         {
-            "name": "base-vcpkg",
-            "displayName": "MSVC x64",
+            "name": "base-manifest",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_TOOLCHAIN_FILE": "C:/vcpkg/scripts/buildsystems/vcpkg.cmake",
+                "VCPKG_FEATURE_FLAGS": "manifests"
+            }
+        },
+        {
+            "name": "MSVC-manifest",
+            "inherits": "base-manifest",
+            "displayName": "MSVC-manifest",
+            "generator": "Visual Studio 17 2022",
+            "description": "Base preset for vcpkg builds",
+            "binaryDir": "${sourceDir}/build/release",
+            "cacheVariables": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "YES",
+                "CMAKE_EXPORT_LINK_COMMANDS": "YES",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install",
+                "CMAKE_OUTPUT_DIRECTORY": "${sourceDir}/build/release",
+                "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/build/release",
+                "CMAKE_LIBRARY_OUTPUT_DIRECTORY": "${sourceDir}/build/release"
+            }
+        },
+            {
+            "name": "MSVC-classic",
+            "displayName": "MSVC-classic",
             "generator": "Visual Studio 17 2022",
             "description": "Base preset for vcpkg builds",
             "binaryDir": "${sourceDir}/build/release",
@@ -15,16 +39,15 @@
                 "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/build/release",
                 "CMAKE_LIBRARY_OUTPUT_DIRECTORY": "${sourceDir}/build/release",
                 "CMAKE_PREFIX_PATH": "C:/vcpkg/installed/x64-windows",
-                "CMAKE_TOOLCHAIN_FILE": "C:/vcpkg/scripts/buildsystems/vcpkg.cmake",
                 "VCPKG_ROOT": "C:/vcpkg",
                 "VCPKG_TARGET_ARCHITECTURE": "x64-windows",
                 "VCPKG_CMAKE_SYSTEM_NAME": "Windows",
-                "VCPKG_TARGET_TRIPLET": "x64-windows",
-                "VCPKG_MANIFEST_MODE": "OFF"
+                "VCPKG_TARGET_TRIPLET": "x64-windows"
             }
         },
         {
             "name": "ucrt64-gcc",
+            "inherits": "base-manifest",
             "displayName": "MSYS2 UCRT64 GCC",
             "generator": "Ninja",
             "description": "Preset for reproducible MSYS2 UCRT64 builds",
@@ -40,7 +63,7 @@
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/install",
                 "VCPKG_ROOT": "C:/vcpkg",
                 "VCPKG_TARGET_TRIPLET": "x64-mingw-static",
-                "CMAKE_TOOLCHAIN_FILE": "C:/vcpkg/scripts/buildsystems/vcpkg.cmake"
+                "VCPKG_APPLOCAL_DEPS": "OFF"
             }
         }
     ],
@@ -49,6 +72,20 @@
             "name": "ucrt64-gcc",
             "configurePreset": "ucrt64-gcc",
             "description": "Build using MSYS2 UCRT64 GCC",
+            "jobs": 8
+        },
+        {
+            "name": "MSVC-manifest",
+            "configurePreset": "MSVC-manifest",
+            "description": "Build using MSVC with vcpkg manifest mode",
+            "configuration": "Release",
+            "jobs": 8
+        },
+        {
+            "name": "MSVC-classic",
+            "configurePreset": "MSVC-classic",
+            "description": "Build using MSVC with classic vcpkg mode",
+            "configuration": "Release",
             "jobs": 8
         }
     ]

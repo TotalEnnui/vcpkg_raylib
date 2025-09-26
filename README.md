@@ -24,7 +24,7 @@ export PATH="/c/Windows/System32/WindowsPowerShell/v1.0:$PATH"
 
 <h2>Common Windows Libraries</h2>
 <table>
-  <thead>
+  <thead>k
     <tr>
       <th>Library</th>
       <th>Purpose</th>
@@ -66,3 +66,12 @@ export PATH="/c/Windows/System32/WindowsPowerShell/v1.0:$PATH"
 </table>
 
 <p>Windows libraries location: C:\Program Files (x86)\Windows Kits\10\Lib\10.0.26100.0\um\x64 </p>
+
+<h2>UCRT64 CMakePresets.json preset</h2>
+<p>It was necessary because VCPKG_APPLOCAL_DEPS controls whether vcpkg runs a post-build PowerShell script (applocal.ps1) to copy runtime dependencies next to your binary. MSYS2 does not recognize powershell.</p>
+<code> "VCPKG_APPLOCAL_DEPS": "OFF"</code>
+
+<h2>Add VCPKG to terminal path</h2>
+<code> $env:PATH += ";C:\vcpkg" </code>
+<h3>Get path to vcpkg.exe</h3>
+<code>Get-Command vcpkg</code>
