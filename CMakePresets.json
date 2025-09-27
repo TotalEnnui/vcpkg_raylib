@@ -25,6 +25,15 @@
                 "CMAKE_LIBRARY_OUTPUT_DIRECTORY": "${sourceDir}/build/release"
             }
         },
+        {
+            "name": "MSVC-manifest-debug",
+            "inherits": "MSVC-manifest",
+            "displayName": "MSVC-manifest Debug",
+            "description": "Debug configuration using vcpkg manifest mode",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
             {
             "name": "MSVC-classic",
             "displayName": "MSVC-classic",
@@ -80,6 +89,13 @@
             "description": "Build using MSVC with vcpkg manifest mode",
             "configuration": "Release",
             "jobs": 8
+        },
+            {
+            "name": "windows-msvc-x64-debug",
+            "displayName": "MSVC x64 Debug",
+            "configurePreset": "MSVC-manifest",
+            "description": "Build using MSVC in Debug mode",
+            "configuration": "Debug"
         },
         {
             "name": "MSVC-classic",
