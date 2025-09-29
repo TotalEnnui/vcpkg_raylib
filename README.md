@@ -70,8 +70,15 @@ export PATH="/c/Windows/System32/WindowsPowerShell/v1.0:$PATH"
 <h2>UCRT64 CMakePresets.json preset</h2>
 <p>It was necessary because VCPKG_APPLOCAL_DEPS controls whether vcpkg runs a post-build PowerShell script (applocal.ps1) to copy runtime dependencies next to your binary. MSYS2 does not recognize powershell.</p>
 <code> "VCPKG_APPLOCAL_DEPS": "OFF"</code>
+<h3>using install</h3>
+<code>cmake --install ./build/ucrt64-gcc</code>
 
 <h2>Add VCPKG to terminal path</h2>
 <code> $env:PATH += ";C:\vcpkg" </code>
 <h3>Get path to vcpkg.exe</h3>
 <code>Get-Command vcpkg</code>
+
+<h2>install clarification</h2>
+<p>vs code taskbar configuration only does configurations and build, NOT intall.  Install must be initiated via terminal, bash (gcc) or developer powershell (MSVC). Outputs just outputs but install installs, in order to maintain separtion</p>
+<code>cmake --install build/ucrt64-gcc</code>
+<code>cmake --install build/release --config Release</code>
