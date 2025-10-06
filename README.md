@@ -1,28 +1,32 @@
-<h2> create system link to allow MSYS UCRT64 to recognize c:\vcpkg </h2> 
-<p>from ucrt64 bash</p>
-<code>
-mkdir -p /usr/local/bin</br>
-ln -s /c/vcpkg/vcpkg.exe /usr/local/bin/vcpkg </br>
-export VCPKG_ROOT=/c/vcpkg  
-</code>
-<h2>make VCPKG_ROOT persistent</h2>
-<code>
-echo 'export VCPKG_ROOT=/c/vcpkg' >> ~/.bashrc</br>
-</code>
-<h2>generate and then build ucrt64-release</h2>
-<p>from ucrt64 bash $</p>
-<code>  
-rm -rf build/ucrt64-gcc</br>
-cmake --preset ucrt64-gcc</br>
-cmake --build --preset ucrt64-gcc</br>
-</code><br>
-<h2> Add PowerShell to MSYS2 $PATH </h2>  
-Bash<br>
-<code>
-export PATH="/c/Windows/System32/WindowsPowerShell/v1.0:$PATH"
-</code>
+## Create system link to allow MSYS UCRT64 to recognize c:\vcpkg 
+from ucrt64 bash:
 
-<h2>Common Windows Libraries</h2>
+```
+mkdir -p /usr/local/bin
+ln -s /c/vcpkg/vcpkg.exe /usr/local/bin/vcpkg
+export VCPKG_ROOT=/c/vcpkg  
+```
+
+## make VCPKG_ROOT persistent
+```
+echo 'export VCPKG_ROOT=/c/vcpkg' >> ~/.bashrc</br>
+```
+
+## generate and then build ucrt64-release
+from ucrt64 bash $
+
+```  
+rm -rf build/ucrt64-gcc
+cmake --preset ucrt64-gcc
+cmake --build --preset ucrt64-gcc
+```
+
+## Add PowerShell to MSYS2 $PATH  
+Bash:
+```
+export PATH="/c/Windows/System32/WindowsPowerShell/v1.0:$PATH"
+```
+## Common Windows Libraries
 <table>
   <thead>k
     <tr>
@@ -65,7 +69,7 @@ export PATH="/c/Windows/System32/WindowsPowerShell/v1.0:$PATH"
     </tr>
 </table>
 
-<p>Windows libraries location: C:\Program Files (x86)\Windows Kits\10\Lib\10.0.26100.0\um\x64 </p>
+Windows libraries location: C:\Program Files (x86)\Windows Kits\10\Lib\10.0.26100.0\um\x64
 
 <h2>UCRT64 CMakePresets.json preset</h2>
 <p>It was necessary because VCPKG_APPLOCAL_DEPS controls whether vcpkg runs a post-build PowerShell script (applocal.ps1) to copy runtime dependencies next to your binary. MSYS2 does not recognize powershell.</p>
@@ -80,5 +84,13 @@ export PATH="/c/Windows/System32/WindowsPowerShell/v1.0:$PATH"
 
 <h2>install clarification</h2>
 <p>vs code taskbar configuration only does configurations and build, NOT intall.  Install must be initiated via terminal, bash (gcc) or developer powershell (MSVC). Outputs just outputs but install installs, in order to maintain separtion</p>
-<code>cmake --install build/ucrt64-gcc</code>
-<code>cmake --install build/release --config Release</code>
+
+### ucrt64-gcc install
+```
+cmake --install build/ucrt64-gcc
+```
+
+### MSVC install
+```
+cmake --install build/release --config Release
+```
