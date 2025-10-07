@@ -31,7 +31,7 @@
             "displayName": "MSVC-manifest Debug",
             "description": "Debug configuration using vcpkg manifest mode"
         },
-            {
+        {
             "name": "MSVC-classic",
             "displayName": "MSVC-classic",
             "generator": "Visual Studio 17 2022",
@@ -41,7 +41,6 @@
                 "CMAKE_EXPORT_COMPILE_COMMANDS": "YES",
                 "CMAKE_EXPORT_LINK_COMMANDS": "YES",
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/install",
-                "CMAKE_OUTPUT_DIRECTORY": "${sourceDir}/build/${presetName}",
                 "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/build/${presetName}",
                 "CMAKE_LIBRARY_OUTPUT_DIRECTORY": "${sourceDir}/build/${presetName}",
                 "CMAKE_PREFIX_PATH": "C:/vcpkg/installed/x64-windows",
