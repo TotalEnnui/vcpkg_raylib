@@ -5,8 +5,8 @@
             "name": "base-manifest",
             "hidden": true,
             "cacheVariables": {
-                "CMAKE_TOOLCHAIN_FILE": "C:/vcpkg/scripts/buildsystems/vcpkg.cmake",
-                "VCPKG_FEATURE_FLAGS": "manifests"
+            "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+            "VCPKG_FEATURE_FLAGS": "manifests"
             }
         },
         {
@@ -65,6 +65,7 @@
                 "CMAKE_CXX_COMPILER": "C:/msys64/ucrt64/bin/g++.exe",
                 "CMAKE_CXX_STANDARD": "17",
                 "CMAKE_EXPORT_COMPILE_COMMANDS": "YES",
+                "CMAKE_MAKE_PROGRAM": "C:/msys64/ucrt64/bin/ninja.exe",
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/install",
                 "VCPKG_ROOT": "C:/vcpkg",
                 "VCPKG_TARGET_TRIPLET": "x64-mingw-static",
