@@ -1,0 +1,45 @@
+{
+  "version": "2.0.0",
+  "inputs": [
+    {
+      "id": "buildPreset",
+      "type": "pickString",
+      "description": "Select a CMake build preset",
+      "options": [
+        "MSVC-manifest",
+        "windows-msvc-x64-debug",
+        "MSVC-classic",
+        "ucrt64-gcc"
+      ],
+      "default": "MSVC-manifest"
+    }
+  ],
+  "tasks": [
+    {
+      "label": "Build (choose preset)",
+      "type": "shell",
+      "command": "cmake",
+      "args": [
+        "--build", "--preset", "${input:buildPreset}"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [
+        "$msCompile",
+        "$gcc"
+      ]
+    },
+    {
+      "label": "Configure (choose preset)",
+      "type": "shell",
+      "command": "cmake",
+      "args": [
+        "--preset", "${input:buildPreset}"
+      ],
+      "group": "build",
+      "problemMatcher": []
+    }
+  ]
+}
