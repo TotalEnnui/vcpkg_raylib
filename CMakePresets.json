@@ -5,8 +5,8 @@
             "name": "base-manifest",
             "hidden": true,
             "cacheVariables": {
-            "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
-            "VCPKG_FEATURE_FLAGS": "manifests"
+                "CMAKE_TOOLCHAIN_FILE": "C:/vcpkg/scripts/buildsystems/vcpkg.cmake",
+                "VCPKG_FEATURE_FLAGS": "manifests"
             }
         },
         {
@@ -36,6 +36,7 @@
             "description": "Base preset for vcpkg builds",
             "binaryDir": "${sourceDir}/build/${presetName}",
             "cacheVariables": {
+                "VCPKG_APPLOCAL_DEPS": "ON",
                 "CMAKE_EXPORT_COMPILE_COMMANDS": "YES",
                 "CMAKE_EXPORT_LINK_COMMANDS": "YES",
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/install",

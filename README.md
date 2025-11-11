@@ -85,6 +85,16 @@ cmake --install build/ucrt64-gcc
 
 ### MSVC install
 
+> Why the Command Line Works Better for `cmake --install`
+
+- VS Code’s Quick Bar (e.g. “CMake: Install”) doesn’t always pass the `--config` Release flag.
+- Without that flag, CMake doesn’t know which subdirectory (Release/, Debug/, etc.) to glob DLLs from — so your install(CODE ...) block silently finds nothing.
+- The command line gives you full control, especially for reproducible install-time logic like your DLL copy step.
+
+> Best practices in Powershell or the VS Code terminal:
+
 ```Powershell
-cmake --install build/release --config Release
+cmake --preset MSVC-manifest
+cmake --build --preset MSVC-manifest --config Release
+cmake --install build/MSVC-manifest --config Release
 ```

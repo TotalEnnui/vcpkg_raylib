@@ -8,7 +8,7 @@
 	"terminal.integrated.cwd": "${workspaceFolder}",
 	"cmake.configureOnOpen": true,
 	"files.exclude": {
-		"**/build": true,
+		"**/build": false,
 		"**/.cache": true
 	},
     "editor.tabSize": 4,

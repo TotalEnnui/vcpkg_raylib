@@ -33,7 +33,28 @@ target_link_libraries(${PROJECT_TARGET} PRIVATE raylib glfw winmm)
 
 # Target installation
 install(TARGETS ${PROJECT_TARGET}
+    RUNTIME DESTINATION bin
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib/static
+)
+
+# Locate DLLs at configure time
+file(GLOB RUNTIME_DLLS "${CMAKE_BINARY_DIR}/*.dll")
+
+# Install main executable
+install(TARGETS ${PROJECT_TARGET}
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib/static
-    )
+)
+
+# Install DLLs at install time (after build)
+install(CODE "
+    file(GLOB DLLS \"${CMAKE_BINARY_DIR}/\$<CONFIG>/*.dll\")
+    foreach(DLL \${DLLS})
+        message(STATUS \"Installing \${DLL} to bin/\")
+        file(INSTALL DESTINATION \"${CMAKE_INSTALL_PREFIX}/bin\" TYPE FILE FILES \${DLL})
+    endforeach()
+")
+
+
