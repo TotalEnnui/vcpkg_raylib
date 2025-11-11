@@ -12,6 +12,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(SOURCE_FILES src/main.cpp)
 set(PROJECT_TARGET main)
+
 #########################
 #   Target Declaration  #
 #########################
