@@ -20,6 +20,7 @@
 - [Worktrees](#worktrees)
   - [Create a new worktree](#create-a-new-worktree)
     - [Steps to Create the Worktree](#steps-to-create-the-worktree)
+    - [🧱 Step-by-Step: Merging a Worktree Branch into Main](#-step-by-step-merging-a-worktree-branch-into-main)
 
 ## Create system link to allow MSYS UCRT64 to recognize c:\vcpkg <!-- omit in toc -->
 
@@ -193,15 +194,15 @@ git rebase -i HEAD~N
 
     ```bash
     cd ~/Documents/repos/vcpkg_raylib
-    ```4.
+    ```
 
 2. Create the worktree:
 
     ```bash
-    git worktree add ../vcpkg_raylib_new_feature -b new_feature
+    git worktree add ../vcpkg_raylib/new_feature -b new_feature
     ```
 
-    > This creates a new branch called `new_feature` and checks it out in a sibling directory `../vcpkg_raylib_new_feature`.
+    > This creates a new branch called `new_feature` and checks it out in a sibling directory `../vcpkg_raylib/new_feature`.
 
 3. Verify it’s active:
 
@@ -213,9 +214,50 @@ git rebase -i HEAD~N
 
 4. Open the new worktree in VS Code:
 
-    - Use **File → Open Folder** and select `../vcpkg_raylib_new_feature`.
+    - Use **File → Open Folder** and select `../vcpkg_raylib/new_feature`.
     - Or run:
 
     ```bash
-    code ../vcpkg_raylib_new_feature
+    code ../vcpkg_raylib/new_feature
     ```
+
+#### 🧱 Step-by-Step: Merging a Worktree Branch into Main
+
+1. Commit all changes in the worktree
+
+    ```bash
+    cd ~/Documents/repos/vcpkg_raylib/new_feature 
+    git status 
+    git add . 
+    git commit -m "Finish new feature" 
+    ```
+
+2. Switch to the main worktree
+
+   ```bash
+   cd ~/Documents/repos/vcpkg_raylib
+   git switch main
+   ```
+
+3. Merge the feature branch
+
+   ```bash
+   git merge new_feature
+   ```
+
+4. Optional: Delete the worktree and branch
+
+   ```bash
+    git worktree remove ../vcpkg_raylib/new_feature
+    git branch -d new_feature
+    ```
+
+### 🧠 Notes for Reproducibility
+
+- Always commit before merging—Git won’t merge uncommitted changes.
+- Use `git diff main..new_feature` to preview changes before merging.
+- Use `--no-ff` to preserve branch history:
+
+  ```bash
+  git merge --no-ff new_feature
+  ```
