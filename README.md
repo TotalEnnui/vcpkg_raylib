@@ -21,6 +21,8 @@
   - [Create a new worktree](#create-a-new-worktree)
     - [Steps to Create the Worktree](#steps-to-create-the-worktree)
     - [🧱 Step-by-Step: Merging a Worktree Branch into Main](#-step-by-step-merging-a-worktree-branch-into-main)
+- [🧾 Step‑by‑Step: Create and Push a Repo to GitHub](#-stepbystep-create-and-push-a-repo-to-github)
+  - [🔑 Memory Hook](#-memory-hook)
 
 ## Create system link to allow MSYS UCRT64 to recognize c:\vcpkg
 
@@ -245,3 +247,57 @@ git rebase -i HEAD~N
   ```bash
   git merge --no-ff new_feature
   ```
+
+## 🧾 Step‑by‑Step: Create and Push a Repo to GitHub
+
+1. Create the repo on GitHub
+
+   - Go to GitHub → click **New repository**.
+   - Give it a name (e.g., vcpkg_raylib).
+   - Leave it empty (no README, .gitignore, or license) if you already have local files.
+2. Initialize locally
+
+   ```bash
+   git init
+   ```
+
+   > This creates a .git folder in your project directory.
+
+3. Add your files
+
+    ```bash
+    git add .
+    ```
+
+4. Commit them
+
+   ```bash
+   git commit -m "my initial commit"
+   ```
+
+5. Connect to GitHub remote
+
+   > Copy the repo's URL from GitHub (HTTPS or SSH). Then:
+
+    ```bash
+    git remote add origin https://github.com/<your-username>/vcpkg_raylib.git
+    ```
+
+6. Push to GitHub
+
+   ```bash
+   git push -u origin main
+   ```
+
+   - If your branch is master instead of main, adjust accordingly.
+   - The `-u` sets upstream tracking so future pushes can just be `git push`.
+
+### 🔑 Memory Hook
+
+> Think of it as I‑A‑C‑R‑P:
+
+- Init → `git init`
+- Add → `git add .`
+- Commit → `git commit -m "..."`
+- Remote → `git remote add origin ...`
+- Push → `git push -u origin main`
