@@ -1,6 +1,6 @@
-<!-- omit in toc -->
-# README.md
+# Tips & Tricks <!-- omit in toc -->
 
+- [Create system link to allow MSYS UCRT64 to recognize c:\\vcpkg](#create-system-link-to-allow-msys-ucrt64-to-recognize-cvcpkg)
 - [make VCPKG\_ROOT persistent](#make-vcpkg_root-persistent)
 - [generate and then build ucrt64-release](#generate-and-then-build-ucrt64-release)
   - [from ucrt64 bash $](#from-ucrt64-bash-)
@@ -22,27 +22,11 @@
     - [Steps to Create the Worktree](#steps-to-create-the-worktree)
     - [🧱 Step-by-Step: Merging a Worktree Branch into Main](#-step-by-step-merging-a-worktree-branch-into-main)
 
-## Create system link to allow MSYS UCRT64 to recognize c:\vcpkg <!-- omit in toc -->
+## Create system link to allow MSYS UCRT64 to recognize c:\vcpkg
 
 from ucrt64 bash:
 
 ```bash- [make VCPKG\_ROOT persistent](#make-vcpkg_root-persistent)
-- [generate and then build ucrt64-release](#generate-and-then-build-ucrt64-release)
-  - [from ucrt64 bash $](#from-ucrt64-bash-)
-- [configure and build using ucrt64 gcc](#configure-and-build-using-ucrt64-gcc)
-- [Add PowerShell to MSYS2 $PATH](#add-powershell-to-msys2-path)
-- [Common Windows Libraries](#common-windows-libraries)
-- [UCRT64 CMakePresets.json preset](#ucrt64-cmakepresetsjson-preset)
-  - [using install](#using-install)
-- [Add VCPKG to terminal path](#add-vcpkg-to-terminal-path)
-  - [Get path to vcpkg.exe](#get-path-to-vcpkgexe)
-- [install clarification](#install-clarification)
-  - [ucrt64-gcc install](#ucrt64-gcc-install)
-  - [MSVC install](#msvc-install)
-- [🧬 Git Interactive Rebase: Clean History with Precision](#-git-interactive-rebase-clean-history-with-precision)
-  - [🔧 Command Overview](#-command-overview)
-  - [🛠️ Actions You Can Take](#️-actions-you-can-take)
-
 mkdir -p /usr/local/bin
 ln -s /c/vcpkg/vcpkg.exe /usr/local/bin/vcpkg
 export VCPKG_ROOT=/c/vcpkg  
